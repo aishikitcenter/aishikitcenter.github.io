@@ -1,0 +1,16 @@
+baseURL = "https://itc.aishikrehman.com/"
+title = "Aishik IT Center"
+
+paginate = 10
+
+[params]
+site_logo = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Emblem_of_the_Government_of_the_People%27s_Republic_of_Bangladesh.svg/113px-Emblem_of_the_Government_of_the_People%27s_Republic_of_Bangladesh.svg.png?20160430173552"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+      hardWraps = true
+
+[outputs]
+home = [ "HTML", "RSS", "JSON"]

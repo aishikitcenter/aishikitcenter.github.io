@@ -1,0 +1,240 @@
+---
+title: BR
+---
+<div style="display: flex; margin-bottom: 6rem">
+    <div class="col-md-4 mb-4 noprint">
+        <form id="pdfForm">
+            <div class="form-group">
+                <label>Union Parishad:</label>
+                <input type="text" id="upname" value="Maijbag Union Parishad" required>
+            </div>
+            <div class="form-group">
+                <label>Upazila, District:</label>
+                <input type="text" id="upzdis" value="Ishwarganj, Mymensingh" required>
+            </div>
+            <div class="form-group">
+                <label>Birth Registration Number:</label>
+                <input type="text" id="brn" required maxlength="17">
+            </div>
+            <div class="form-group">
+                <label>Security Code:</label>
+                <input type="text" id="code" required maxlength="4">
+                <button type="button" id="generateCode">Generate Code</button>
+            </div>
+            <div class="form-group">
+                <label>Date of Registration:</label>
+                <input type="text" id="dor" required placeholder="DD/MM/YYYY">
+            </div>
+            <div class="form-group">
+                <label>Date of Issuance:</label>
+                <input type="text" id="doi" placeholder="DD/MM/YYYY" required>
+            </div>
+            <div class="form-group">
+                <label>Date of Birth:</label>
+                <input type="text" id="dob" placeholder="DD/MM/YYYY" required>
+            </div>
+            <!-- <div class="form-group">
+                <label>DOB in Word:</label>
+                <input type="text" id="dobin" placeholder="put double space after month" required>
+            </div> -->
+            <div class="form-group">
+                <label>Sex:</label>
+                <select type="text" id="sex" required>
+                    <option value="">Select</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>নাম:</label>
+                <input type="text" id="naam" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label>পিতার নাম:</label>
+                <input type="text" id="pita" required>
+            </div>
+            <div class="form-group">
+                <label>Father's Name:</label>
+                <input type="text" id="fname" required>
+            </div>
+
+            <div class="form-group">
+                <label>মাতার নাম:</label>
+                <input type="text" id="mata" required>
+            </div>
+            <div class="form-group">
+                <label>Mother's Name:</label>
+                <input type="text" id="mname" required>
+            </div>
+            <div class="form-group">
+                <label>জন্মস্থান:</label>
+                <input type="text" id="pob_bn" value="ময়মনসিংহ" required>
+            </div>
+            <div class="form-group">
+                <label>Place of Birth:</label>
+                <input type="text" id="pob" value="Mymensingh" required>
+            </div>
+            <div class="form-group">
+                <label>স্থায়ী ঠিকানা:</label>
+                <input id="thikana1" placeholder="Line 1" required>
+                <input id="thikana2" placeholder="Line 2" value="মাইজবাগ, ঈশ্বরগঞ্জ" required>
+                <input id="thikana3" placeholder="Line 3" value="ময়মনসিংহ" required>
+            </div>
+            <div class="form-group">
+                <label>Permanent Addres:</label>
+                <input id="perma1" placeholder="Line 1" required>
+                <input id="perma2" placeholder="Line 2" value="Maijbag, Ishwarganj" required>
+                <input id="perma3" placeholder="Line 3" value="Mymensingh" required>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-8 mb-4">
+        <div id="svgContainer"></div>
+    </div>
+</div>
+<div class="noprint" style="text-align: center; padding-top: 1rem">
+    <button type="button" onclick="fillSVG()">Update</button>
+    <button onclick="window.print()">Print</button>
+</div>
+
+    <script>
+        async function fillSVG() {
+            function convertDateToWords(dateStr) {
+                const basicNumbers = ["", "First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth", "Ninth", "Tenth",
+                    "Eleventh", "Twelfth", "Thirteenth", "Fourteenth", "Fifteenth", "Sixteenth", "Seventeenth",
+                    "Eighteenth", "Nineteenth"];
+                const number = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine",
+                    "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen",
+                    "Seventeen", "Eighteen", "Nineteen"];
+                const tensNumbers = ["", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"];
+                const digits = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"];
+                const monthNames = ["", "January", "February", "March", "April", "May", "June",
+                    "July", "August", "September", "October", "November", "December"];
+
+                // Split the date into dd, mm, yyyy
+                const [dd, mm, yyyy] = dateStr.split("/").map(Number);
+
+                // Convert day (dd) to words
+                let dayWord;
+                if (dd < 20) {
+                    dayWord = basicNumbers[dd];
+                } else {
+                    dayWord = tensNumbers[Math.floor(dd / 10)] + (dd % 10 !== 0 ? " " + basicNumbers[dd % 10] : "");
+                }
+
+                // Convert month (mm) to words
+                const monthWord = monthNames[mm];
+
+                // Convert year (yyyy) to words
+                let yearWord = "";
+                if (yyyy < 2000) {
+                    yearWord = "Nineteen ";
+                    const lastTwoDigits = yyyy % 100;
+                    if (lastTwoDigits < 20) {
+                        yearWord += basicNumbers[lastTwoDigits];
+                    } else {
+                        yearWord += tensNumbers[Math.floor(lastTwoDigits / 10)] + (lastTwoDigits % 10 !== 0 ? " " + digits[lastTwoDigits % 10] : "");
+                    }
+                } else if (yyyy === 2000) {
+                    yearWord = "Two Thousand";
+                } else {
+                    yearWord = "Two Thousand ";
+                    const lastTwoDigits = yyyy % 100;
+                    if (lastTwoDigits < 20) {
+                        yearWord += number[lastTwoDigits];
+                    } else {
+                        yearWord += tensNumbers[Math.floor(lastTwoDigits / 10)] + (lastTwoDigits % 10 !== 0 ? " " + digits[lastTwoDigits % 10] : "");
+                    }
+                }
+
+                // Returning the full date in words
+                return `${dayWord} of ${monthWord}  ${yearWord.trim()}`;
+            }
+
+            function titleCase(str) {
+                str = str.toLowerCase().split(' ');
+                for (let i = 0; i < str.length; i++) {
+                    str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+                }
+                return str.join(' ');
+            }
+
+            // Getting the form data
+            const upname = titleCase(document.getElementById('upname').value);
+            const upzdis = titleCase(document.getElementById('upzdis').value);
+            const brn = document.getElementById('brn').value;
+            const code = document.getElementById('code').value.toUpperCase();
+            const doi = document.getElementById('doi').value;
+            const dor = document.getElementById('dor').value;
+            const dob = document.getElementById('dob').value;
+            // Conditional check for dob and converting date to words
+            let dobin = "";
+            if (/^\d{2}\/\d{2}\/\d{4}$/.test(dob)) {
+                dobin = convertDateToWords(dob);
+            }
+
+            const sex = document.getElementById('sex').value;
+            const naam = document.getElementById('naam').value;
+            const name = titleCase(document.getElementById('name').value);
+            document.title = name;
+            const pita = document.getElementById('pita').value;
+            const fname = titleCase(document.getElementById('fname').value);
+            const mata = document.getElementById('mata').value;
+            const mname = titleCase(document.getElementById('mname').value);
+            const pob_bn = document.getElementById('pob_bn').value;
+            const pob = document.getElementById('pob').value;
+            const thikana1 = document.getElementById('thikana1').value;
+            const thikana2 = document.getElementById('thikana2').value;
+            const thikana3 = document.getElementById('thikana3').value;
+            const perma1 = document.getElementById('perma1').value;
+            const perma2 = document.getElementById('perma2').value;
+            const perma3 = document.getElementById('perma3').value;
+
+            // Fetching the SVG template
+            const response = await fetch('template.svg');
+            let svgText = await response.text();
+
+            // Replacing placeholders with form data
+            svgText = svgText.replace('${upname}', upname);
+            svgText = svgText.replace('${code}', code);
+            svgText = svgText.replace('${upzdis}', upzdis);
+            svgText = svgText.replace('${brn}', brn);
+            svgText = svgText.replace('${barcode}', brn);
+            svgText = svgText.replace('${dor}', dor);
+            svgText = svgText.replace('${doi}', doi);
+            svgText = svgText.replace('${dob}', dob);
+            svgText = svgText.replace('${dobin}', dobin); // Fill the converted date
+            svgText = svgText.replace('${sex}', sex);
+            svgText = svgText.replace('${naam}', naam);
+            svgText = svgText.replace('${name}', name);
+            svgText = svgText.replace('${pita}', pita);
+            svgText = svgText.replace('${fname}', fname);
+            svgText = svgText.replace('${mata}', mata);
+            svgText = svgText.replace('${mname}', mname);
+            svgText = svgText.replace('${pob_bn}', pob_bn);
+            svgText = svgText.replace('${pob}', pob);
+            svgText = svgText.replace('${thikana1}', thikana1);
+            svgText = svgText.replace('${thikana2}', thikana2);
+            svgText = svgText.replace('${thikana3}', thikana3);
+            svgText = svgText.replace('${perma1}', perma1);
+            svgText = svgText.replace('${perma2}', perma2);
+            svgText = svgText.replace('${perma3}', perma3);
+
+            // Insert the updated SVG into the container
+            const svgContainer = document.getElementById('svgContainer');
+            svgContainer.innerHTML = svgText;
+        }
+        document.getElementById('generateCode').addEventListener('click', function () {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let randomCode = '';
+            for (let i = 0; i < 4; i++) {
+                randomCode += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            document.getElementById('code').value = randomCode;
+        });
+    </script>

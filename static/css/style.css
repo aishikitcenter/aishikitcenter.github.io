@@ -1,0 +1,151 @@
+:root,
+[data-bs-theme=light] {
+  /* Colors */
+  --bd-white: #fff;
+  --bd-green-4: #195e44;
+  --bd-green-5: #103b2b;
+  --bd-merun-5: #3b1010;
+  --bd-red-5: #f54e00;
+  --yellow4: #ffc628;
+  --lemon5: #c6f221;
+}
+
+[data-bs-theme=dark] {
+  color-scheme: dark;
+}
+
+.vh-80 {
+  height: 80vh !important
+}
+
+/* IMAGES */
+img {
+  width: 100%;
+}
+
+/* BUTTONS */
+.btn-round {
+  background-color: var(--red5);
+  border-radius: 5rem;
+  border: 2px solid white;
+  color: white;
+}
+
+/* BACKGROUNDS */
+.bg-green-5 {
+  background-color: var(--bd-green-5);
+  color: white;
+}
+
+.bg-red-5 {
+  background-color: var(--bd-red-5);
+  color: white;
+}
+
+.bg-merun-5 {
+  background-color: var(--bd--merun-5);
+  color: white;
+}
+
+/*  CSS ONLY MENU */
+/* .navbar-collapse {
+  display: none;
+}
+
+#navbar-toggler:checked~.navbar-collapse {
+  display: block;
+}
+
+.nav-item.dropdown.dropdown-mega .dropdown-menu {
+  top: auto;
+  left: 10%;
+} */
+
+
+
+@media screen and (min-width: 768px) {
+  .vl {
+    border-left: 1px solid #adadad;
+    height: 2rem;
+    margin: auto;
+  }
+}
+
+.border-red {
+  border: 2px solid var(--bd-red-5) !important
+}
+
+.border-green {
+  border: 2px solid var(--bd-green-5) !important
+}
+
+.border-top-red {
+  border-top: 2px solid var(--bd-red-5) !important
+}
+
+.border-top-green {
+  border-top: 2px solid var(--bd-green-5) !important
+}
+
+.border-bottom-red {
+  border-bottom: 2px solid var(--bd-red-5) !important
+}
+
+.border-bottom-green {
+  border-bottom: 2px solid var(--bd-green-5) !important
+}
+
+.homepage_links li,
+.border-left-green {
+  border-left: 5px solid var(--bd-merun-5) !important;
+  padding-left: 1rem;
+}
+
+.homepage_links li a::after {
+  content: '⩥';
+}
+
+/* Global Menu */
+.menu_global li {
+  margin-top: 0.8rem;
+  font-weight: bold;
+}
+
+/* .menu_global {
+  position: absolute;
+  width: 100vw;
+  height: 90vh;
+  background: white;
+} */
+
+.menu_global li::before {
+  content: "● ";
+  color: var(--bd-red-5);
+  /* background: #103b2b;
+  border-radius: 1rem;
+  margin-right: 1rem;
+  height: 10px;
+  display: inline-block; */
+}
+
+/* .menu_global a {
+  border-bottom: 2px solid #d3d0d0 !important;
+} */
+
+
+.nav-link.dropdown-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+  color: var(--bd-white);
+  background-color: var(--bd-red-5);
+}
+
+.py-10 {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}

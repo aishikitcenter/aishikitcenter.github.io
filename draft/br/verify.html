@@ -1,0 +1,43 @@
+---
+title: তথ্য অনুসন্ধান
+---
+
+
+<form action="#" enctype="multipart/form-data" id="ubrnsearchform" method="post"><input
+        name="__RequestVerificationToken" type="hidden"
+        value="2ldzxxYgl0sw6_kI0Thc2N-paDfffmzDfdd6zXQycDM8C7taWaIvQWYfTeYd8J-viTjbzt8JM1ra7jCRPHPquyUNsOe4frkpB9a-uE_oSgA1" />
+    <div style="float:right">
+        <h3><em> <a href="/UDRNVerification">Click here to verify death record</a></em></h3>
+    </div>
+    <div>
+        <p class="text-info">
+            <em>Enter "17 digits Birth Registration Number" and "Date of Birth" of a person to verify the Birth
+                Record.</em>
+            <br /><em>জন্ম নিবন্ধন তথ্য যাচাই এর জন্য ১৭ অংকের জন্ম নিবন্ধন নম্বর ও জন্ম তারিখ প্রবেশ করান</em>
+
+        </p>
+        <div class="form-group">
+            <label for="ubrn">Birth Registration Number:</label>
+            <input autocomplete="off" class="form-control" data-val="true" data-val-regex="17 digits only"
+                data-val-regex-pattern="[0-9]{17}" data-val-required="required" id="ubrn" name="UBRN"
+                oncopy="return false" onpaste="return false" type="number" value="" />
+            <span class="field-validation-valid text-danger" data-valmsg-for="UBRN" data-valmsg-replace="true"></span>
+
+        </div>
+        <div class="form-group">
+            <label for="BirthDate">Date of Birth (YYYY-MM-dd):</label><br />
+            <input class="datepicker text-box single-line" data-val="true"
+                data-val-date="The field BirthDate must be a date." data-val-regex="Expected format: yyyy-MM-dd only"
+                data-val-regex-pattern="^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$" data-val-required="required"
+                id="BirthDate" name="BirthDate" type="datetime" value="" />
+            <span class="field-validation-valid text-danger  " data-valmsg-for="BirthDate"
+                data-valmsg-replace="true"></span>
+
+        </div>
+
+        <div class="form-group">
+            <input class="btn btn-primary" type="submit" value="Search" />
+            <input class="btn btn-primary" type="reset" value="Clear" />
+        </div>
+    </div>
+</form>

@@ -1,0 +1,18 @@
+{{ define "main" }}
+<section class="bg-green-5">
+    <div class="container">
+        <div class="py-5">
+            {{ partial "breadcrumb.html" . }}
+            <div class="mt-3">
+                <h1>{{ .Title }}</h1>
+                {{/*  <div class="fs-6">Pear Deck Learning is a powerful ecosystem of education tools that
+                    assess progress, offer real-time feedback, and provide the differentiated instruction and
+                    gamified practice that keeps students engaged and excelling.</div>  */}}
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container pt-5">
+    {{ .Content}}
+</div>
+{{ end }}
